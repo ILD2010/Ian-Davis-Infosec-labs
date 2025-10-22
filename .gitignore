@@ -1,0 +1,22 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+.vscode/
+
+# Secrets
+*.pem
+*.key
+.env
+
+
+#!/bin/bash
+# nmap_scan_template.sh - lab use only
+TARGET=$1
+if [ -z "$TARGET" ]; then
+  echo "Usage: $0 <target>"
+  exit 1
+fi
+nmap -sS -sV --top-ports 100 -oA scans/${TARGET}_top100 $TARGET
